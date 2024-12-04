@@ -82,6 +82,59 @@
                 padding: 0.5rem;
             }
         }
+
+        /* Centering the table */
+        .responsive-table-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            overflow-x: auto; /* Ensures horizontal scroll for smaller screens */
+        }
+
+        .responsive-table {
+            width: 90%; /* Adjust to keep the table centered */
+            max-width: 800px; /* Optional: Limit the width for better readability on large screens */
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        .responsive-table th,
+        .responsive-table td {
+            text-align: left;
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        .responsive-table th {
+            background-color: #f4f4f4;
+        }
+
+        @media screen and (max-width: 768px) {
+            .responsive-table,
+            .responsive-table tbody,
+            .responsive-table tr,
+            .responsive-table td {
+                display: block;
+                width: 100%;
+            }
+            .responsive-table tr {
+                margin-bottom: 15px;
+            }
+            .responsive-table td {
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+            }
+            .responsive-table td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                padding-left: 10px;
+                text-align: left;
+                font-weight: bold;
+            }
+        }
     </style>
 </head>
 <body>
@@ -110,6 +163,28 @@
             <h2>Contact Us</h2>
             <p>Email: contact@example.com</p>
             <p>Phone: (123) 456-7890</p>
+        </div>
+
+        <!-- Responsive Table Section -->
+        <div class="responsive-table-container">
+            <table class="responsive-table">
+                <thead>
+                    <tr>
+                        <th>Column 1</th>
+                        <th>Column 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Column 1">tablename</td>
+                        <td data-label="Column 2">The name of the table to which the index belongs.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Column 1">indexname</td>
+                        <td data-label="Column 2">The name of the index being analyzed.</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
